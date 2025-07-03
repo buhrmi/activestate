@@ -1,6 +1,6 @@
 {
   "name": "activestate",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Push data from your Rails backend directly into Svelte 5 state",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,11 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/buhrmi/activestate/issues"
+  },
+  "exports": {
+    ".": {
+      "svelte": "./index.svelte.js"
+    }
   },
   "homepage": "https://github.com/buhrmi/activestate#readme",
   "devDependencies": {},
