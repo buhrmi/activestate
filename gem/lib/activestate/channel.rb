@@ -43,11 +43,11 @@ module ApplicationCable
       @subject = subject
     end
 
-    def state(path)
-      State.new(@subject, @channel, path)
+    def state(*path)
+      State.new(@subject, @channel, path.join('.'))
     end
-
   end
+
   class Channel < ActionCable::Channel::Base
     public :transmit
 
@@ -55,8 +55,8 @@ module ApplicationCable
       ScopedChannel.new(self, subject)
     end
 
-    def state(path)
-      State.new(nil, self, path)
+    def state(*path)
+      State.new(nil, self, path.join('.'))
     end
   end
 end

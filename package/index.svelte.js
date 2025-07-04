@@ -47,18 +47,17 @@ export function registerMutator(name, mutator) {
 
 
 function received(data) {
-  const path = Array.isArray(data.path) ? data.path.join('.') : data.path;
   const mutator = mutators[data.action]
   if (mutator) {
-    mutator(path, data.data);
+    mutator(data.path, data.data);
   } 
   else {
-    const target = get(State, path);
+    const target = get(State, data.path);
     if (target && typeof target[data.action] === 'function') {
       target[data.action](data.data);
     }
     else {
-      console.error(`No mutator or method found for action "${data.action}" on path "${path}"`);
+      console.error(`No mutator or method found for action "${data.action}" on path "${data.path}"`);
     }
   }
 }

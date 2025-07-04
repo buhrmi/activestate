@@ -22,6 +22,8 @@ class ActiveStateTest < ApplicationSystemTestCase
     assert_no_text "deleteme"
     assert_no_text "deleteMe"
     assert_text "keepMe"
+    assert_text "goofy"
+    assert_text "goofy24"
     
 
   end

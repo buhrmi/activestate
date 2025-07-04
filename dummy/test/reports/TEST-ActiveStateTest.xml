@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite time='1.527468' skipped='0' failures='0' errors='0' name="ActiveStateTest" assertions='17' tests='1' timestamp="2025-06-05T00:34:16+07:00">
-  <testcase time='1.527468' file="test/system/active_state_test.rb" name="test_subscribing,_updating,_appending" assertions='17'>
+<testsuite time='1.293039' skipped='0' failures='0' errors='0' name="ActiveStateTest" assertions='19' tests='1' timestamp="2025-07-04T18:53:14+07:00">
+  <testcase time='1.293039' file="test/system/active_state_test.rb" name="test_subscribing,_updating,_appending" assertions='19'>
   </testcase>
 </testsuite>
