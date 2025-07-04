@@ -24,6 +24,11 @@ const mutators = {
       else target.push(entry);
     })
   },
+  push(path, data) {
+    const target = get(State, path);
+    if (!target) set(State, path, [data]);
+    else target.push(data);
+  },
   delete(path, selector) {
     const target = get(State, path);
     if (Array.isArray(target)) {

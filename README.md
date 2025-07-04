@@ -82,7 +82,7 @@ UserChannel[some_user].state('messages').upsert({id: 4, text: "Changed text"})
 
 All state mutations operate on a path. This path can be either specified via dot-notation (eg `projects.421.name`), or as an array (eg. `["projects", project.id, "name"]`).
 
-ActiveState comes with 4 built-in mutators: `set`, `assign`, `upsert`, and `delete` (by the way, when did people start to say "mutating"):
+ActiveState comes with 5 built-in mutators: `set`, `assign`, `push`, `upsert`, and `delete` (by the way, when did people start to say "mutating"):
 
 #### `set(data)`
 
@@ -92,13 +92,17 @@ UserChannel[some_user].state('current_user.name').set("John")
 
 Replaces the value of `current_user.name` with `John`.
 
-#### `merge(data)`
+#### `assign(data)`
 
 ```rb
 UserChannel[some_user].state('current_user').assign({name: 'new name'})
 ```
 
 Uses `Object.assign` to merge the passed object onto `current_user`.
+
+#### `push(data)`
+
+Pushes data on to the array. If the specified path doesn't exist, it will be initialized with a new array.
 
 #### `upsert(data, key = "id")`
 
