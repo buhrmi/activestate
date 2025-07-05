@@ -1,7 +1,7 @@
 import { createConsumer } from "@rails/actioncable";
 import {get,set} from '@eivifj/dot';
 
-let consumer
+export let consumer
 
 export const State = $state({})
 
@@ -88,10 +88,4 @@ export function reset() {
   Object.keys(State).forEach(key => {
     delete State[key];
   });
-}
-
-export function reconnect() {
-  if (consumer) {
-    consumer.connection.reopen();
-  }
 }
