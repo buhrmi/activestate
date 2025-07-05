@@ -3,7 +3,7 @@ import {get,set} from '@eivifj/dot';
 
 let consumer
 
-export let State = $state({})
+export const State = $state({})
 
 const mutators = {
   set(path, data) {
