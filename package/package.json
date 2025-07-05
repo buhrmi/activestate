@@ -1,6 +1,6 @@
 {
   "name": "activestate",
-  "version": "2.0.7",
+  "version": "2.1.0",
   "description": "Push data from your Rails backend directly into Svelte 5 state",
   "main": "index.js",
   "scripts": {

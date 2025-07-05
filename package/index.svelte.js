@@ -89,3 +89,9 @@ export function reset() {
     delete State[key];
   });
 }
+
+export function reconnect() {
+  if (consumer) {
+    consumer.connection.reopen();
+  }
+}
