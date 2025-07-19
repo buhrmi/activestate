@@ -6,23 +6,30 @@
 
 ActiveState allows you to update your Svelte application state easily and in real-time from your Rails backend. It's a combination of an npm package and a Ruby gem that gives you an application-wide Svelte 5 `$state` object and methods to manipulate this state object using dot-notation.
 
-## In a nutshell
+## Quick example
 
-With ActiveState, you have an application-wide state object like this:
-
-```svelte
+**In your Svelte component:**
+```html
 <script>
 import { State } from 'activestate'
 </script>
 
-<h1>{State.projects[projectId].name}</h1>
+<!-- This updates automatically when the backend changes it -->
+<h1>Welcome, {State.user?.name}!</h1>
+<p>You have {State.notifications?.length || 0} new messages</p>
 ```
 
-And you can update it in real-time from your Rails backend like this:
-
-```rb
-ProjectChannel[project].state("projects", project.id, "name").set("My awesome project")
+**In your Rails backend:**
+```ruby
+# Instantly update the UI for a specific user
+UserChannel[current_user].state('user.name').set('John Doe')
+UserChannel[current_user].state('notifications').push({
+  id: 123, 
+  message: 'Welcome to ActiveState!'
+})
 ```
+
+That's it! No message handlers, no state management boilerplate.
 
 ## Detailed example
 
