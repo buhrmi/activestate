@@ -3,9 +3,11 @@ import {get,set} from '@eivifj/dot';
 
 export let consumer
 
-export const State = $state({})
+const State = $state({})
+export default State
+export { State }
 
-const mutators = {
+const handlers = {
   set(path, data) {
     set(State, path, data);
   },
@@ -42,19 +44,19 @@ const mutators = {
   }
 }
 
-export function registerMutator(name, mutator) {
-  mutators[name] = function(path, data) {
+export function registerHandler(name, handler) {
+  handlers[name] = function(path, data) {
     const currentValue = get(State, path);
-    const newValue = mutator(currentValue, data);
+    const newValue = handler(currentValue, data);
     set(State, path, newValue);
   }
 }
 
 
 function received(data) {
-  const mutator = mutators[data.action]
-  if (mutator) {
-    mutator(data.path, data.data);
+  const handler = handlers[data.action]
+  if (handler) {
+    handler(data.path, data.data);
   } 
   else {
     const target = get(State, data.path);
@@ -62,7 +64,7 @@ function received(data) {
       target[data.action](data.data);
     }
     else {
-      console.error(`No mutator or method found for action "${data.action}" on path "${data.path}"`);
+      console.error(`No handler or method found for action "${data.action}" on path "${data.path}"`);
     }
   }
 }

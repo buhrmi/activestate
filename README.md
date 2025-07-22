@@ -11,7 +11,7 @@ ActiveState allows you to update your Svelte application state easily and in rea
 **In your Svelte component:**
 ```html
 <script>
-import { State } from 'activestate'
+import State from 'activestate'
 </script>
 
 <!-- This updates automatically when the backend changes it -->
@@ -52,7 +52,7 @@ Then, inside your component, set up a subscription and iterate over `State.messa
 
 ```svelte
 <script>
-import { subscribe, State } from 'activestate'
+import State, { subscribe } from 'activestate'
 import { onDestroy } from 'svelte'
 
 // Set up a subscription to the UserChannel
@@ -127,22 +127,22 @@ If called on an array, it iterates over the array and deletes all entries whose 
 
 If called on an object, it deletes the provided key from the object.
 
-### Native modifiers
+### Native handlers
 
-You can also call functions that natively exist on objects in the state. For example, if you have an array in `current_user.notices`, you can call its native `push` function:
+You can also call functions that natively exist on objects in the state. For example, if you have an array in `current_user.notices`, you can call its native `splice` function:
 
 ```ruby
-UserChannel[some_user].state('current_user.notices').push "next chunk"
+UserChannel[some_user].state('current_user.notices').splice(1)
 ```
 
-### Custom modifiers
+### Custom handlers
 
-You can also define custom methods to modify your state:
+You can also define custom handlers to modify your state:
 
 ```js
-import { registerMutator, State } from 'activestate'
+import State, { registerHandler } from 'activestate'
 
-registerMutator('append', function(currentValue, data) {
+registerHandler('append', function(currentValue, data) {
   return currentValue.concat(data)
 })
 

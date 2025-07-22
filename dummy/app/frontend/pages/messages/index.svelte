@@ -1,5 +1,5 @@
 <script>
-  import { State, subscribe, registerMutator } from "activestate"
+  import State, { subscribe, registerHandler } from "activestate"
 
   State.records = [{id: 1, name: "old1"}, {id: 3, name: "old3"}]
   State.deeply = {nested: {value: 'foundme'}}
@@ -32,7 +32,7 @@
     axios.post('/messages', { message: 'Hello World' })
   }
 
-registerMutator('append', function(old, val) {
+registerHandler('append', function(old, val) {
   return old.concat(val)
 })
   
