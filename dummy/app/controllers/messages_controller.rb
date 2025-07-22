@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
     UserChannel[@user].state('longString').append(" appended")
     UserChannel[@user].state('val').delete "deleteme"
     UserChannel[@user].state('delete.array').delete name: 'deleteMe'
-    UserChannel[@user].state('numberkeys.23.person').set name: 'goofy'
+    UserChannel[@user].state('numberkeys.23.person').set name: 'goofy3'
     UserChannel[@user].state('numberkeys', 24, 'person').set name: 'goofy24'
   end
 

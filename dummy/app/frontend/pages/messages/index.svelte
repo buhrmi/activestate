@@ -69,11 +69,11 @@ Deeply nested value: {State.deeply.nested.value}
 </p>
 
 <p>
-  {State.numberkeys?.[23].person.name}
+  {State.numberkeys?.[23]?.person?.name}
 </p>
 
 <p>
-  {State.numberkeys?.[24].person.name}
+  {State.numberkeys?.[24]?.person?.name}
 </p>
 <!--
 
