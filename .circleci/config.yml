@@ -48,6 +48,7 @@ jobs:
       - run: bundle exec rake db:setup
 
       # Run the tests
+      - run: bin/vite build --clear --mode=test
       - run: bundle exec rake test:system test
 
       - store_test_results:
