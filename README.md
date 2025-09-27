@@ -94,18 +94,18 @@ ActiveState comes with 5 built-in modifiers: `set`, `assign`, `push`, `upsert`, 
 #### `set(data)`
 
 ```rb
-UserChannel[some_user].state('current_user.name').set("John")
+UserChannel[some_user].state('target').set("value")
 ```
 
-Replaces the value of `current_user.name` with `John`.
+Replaces the value of `target` with `value`.
 
 #### `assign(data)`
 
 ```rb
-UserChannel[some_user].state('current_user').assign({name: 'new name'})
+UserChannel[some_user].state('target').assign({key: 'value'})
 ```
 
-Uses `Object.assign` to merge the passed object onto `current_user`.
+Uses `Object.assign` to merge the passed object onto `target`.
 
 #### `push(data)`
 
@@ -114,10 +114,10 @@ Pushes data onto the array. If the specified path doesn't exist, it will be init
 #### `upsert(data, key = "id")`
 
 ```rb
-UserChannel[some_user].state('current_user.notices').upsert([{id: 4, name: "new name"}])
+UserChannel[some_user].state('target').upsert([{id: 1, key: "value"}])
 ```
 
-This iterates over the array in `current_user.notices` and performs an upsert using the specified key.
+Iterates over the array in `target` and performs an upsert using the specified key (`id` by default).
 
 #### `delete({key: val})`
 
