@@ -43,7 +43,8 @@ First, we need a channel to subscribe to:
 # user_channel.rb
 class UserChannel < ApplicationCable::Channel
   def subscribed
-    stream_for current_user
+    user = User.find(params[:user_id])
+    stream_for user
   end
 end
 ```
@@ -55,8 +56,10 @@ Then, inside your component, set up a subscription and iterate over `State.messa
 import State, { subscribe } from 'activestate'
 import { onDestroy } from 'svelte'
 
+const { user_id } = $props()
+
 // Set up a subscription to the UserChannel
-const unsubscribe = subscribe('UserChannel', {user_id: something})
+const unsubscribe = subscribe('UserChannel', { user_id })
 
 // Don't forget to unsubscribe when the component is destroyed
 onDestroy(unsubscribe)
