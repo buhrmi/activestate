@@ -1,5 +1,6 @@
 # ActiveState
 
+> [!NOTE]
 > This package is not actively maintained anymore. If you're looking to do real-time updates with Rails, I recommend taking a look at [DexieCable](https://github.com/buhrmi/dexiecable). It's similar to ActiveState, but supports offline apps and other frameworks besides Svelte.
 
 [![CircleCI](https://circleci.com/gh/buhrmi/activestate.svg?style=shield)](https://circleci.com/gh/buhrmi/activestate)
